@@ -16,7 +16,12 @@ void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
             n -= 1;
         }
         last -=1;
-    }   
+    }
+    while (n>0){
+         nums1[last] = nums2[n];
+         n-=1;
+        last-=1;
+    }
 }
 
 int countNonZero(const vector<int> a){
