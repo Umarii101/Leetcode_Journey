@@ -18,14 +18,18 @@ int removeDuplicates(vector<int>&nums){
             while(j<last){
                 cout<<"Replacing index value ("<<j<<", "<<nums[j]<<") with ("<<j+1<<", "<<nums[j+1]<<")"<<endl;
                 nums[j]=nums[j+1];//Up until this point, the function can handle only 2 duplicates.
-                //Need an additional check to make sure that the duplicates are repeated or not in the next indexes.
                 j++;
                 
             }
+            nums[last] = 0;
+            last -=1;
             //Placing 0 at last index, and moving the Last index pointer to the left one time.
-       }
-        nums[last] = 0;
-        last -=1;
+            //Need an additional check to make sure that the duplicates are repeated or not in the next indexes.
+            if(nums[i] == nums[i+1]){
+                i -=1; //So the pointer ends up at i again when this condition is met.
+            }
+        }
+
     }
     return last+1;
 }
