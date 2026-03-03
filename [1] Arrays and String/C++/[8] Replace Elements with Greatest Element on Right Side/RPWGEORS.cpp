@@ -4,38 +4,66 @@ using namespace std;
 
 vector <int> replaceElements(vector<int>& arr) {
     cout<<"Starting The Operation\n";
+    bool bounds = 1;
     for(int i=0; i<arr.size();i++){
         cout<<"i = "<<i<<"\n";
-        if(arr[i] < arr[i+1]){
-            arr[i]=arr[i+1];
+        if(arr[i] < arr[i+1] && bounds){
+            cout<<"[Replacing] -> "<<arr[i]<<" -> "<<arr[i+1]<<endl;
+            arr[i]=arr[i+1]; 
             int j = i;
             while(arr[j+1]>arr[j+2]){
                 cout<<"j = "<<j<<"\n";
                 j++;
             }
-            while(i<j){
-                arr[i+1]=arr[j];
+            cout<<"-> J = "<<j<<"\n";
+            while(i<j+2){
+                cout<<"Target found (Value,Index) -> ("<<arr[j+2]<<","<<j+2<<")\n";
+                cout<<"[After]-> J= "<<j<<"\n";
+                if(i+2 != arr.size()-1){
+                    cout<<"[Replacing] -> "<<arr[i+1]<<" -> "<<arr[j+2]<<endl;
+                    arr[i+1]=arr[j+2];
+                }
+                else{
+                    cout<<"[Warning] i Out of Bounds\n";
+                    bounds=0;
+                    break;
+                }
                 cout<<"i(2) = "<<i<<"\n";
                 i++;
             }
         }
-    }
+    } 
+    int last = arr.size()-1;
+    cout<<"\n\n [SIZE]-> "<<last<<"\n\n";
+    arr[last-1]=arr[last];
+    arr[last]=-1;
     return arr;
 }
 
 int main(){
-    vector<int> arr = {17,18,5,4,6,1}; //Size of Input  Array = 6
-    //Output array = {18,6,6,6,1,-1}   //Size of Output Array = 6
+    vector<int> arr = {400}; //Size of Input  Array = 6
+    int last = arr.size()-1;
     cout<<"Input Array = [";
-    for(int num : arr){
-        cout<<num<<", ";
+    for(int i=0; i<last+1;i++){
+        if(i!=last){
+            cout<<arr[i]<<", ";
+        }
+        else{
+            cout<<arr[i];
+            cout<<"]\n";
+        }
     }
-    cout<<"]\n";
-    replaceElements(arr);
+    cout<<"Size = "<<arr.size()<<endl;
+    replaceElements(arr); 
     cout<<"Output Array = [";
-    for(int num : arr){
-        cout<<num<<", ";
+    for(int i=0; i<last+1;i++){
+        if(i!=last){
+            cout<<arr[i]<<", ";
+        }
+        else{
+            cout<<arr[i];
+            cout<<"]\n";
+        }
     }
-    cout<<"]\n";
-    return 0;
+    cout<<"Size = "<<arr.size()<<endl;    return 0;
 }
