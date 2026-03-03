@@ -21,16 +21,18 @@ bool validMountainArray(vector<int>& arr) {
                     }
                 } return 1;
             }
-        }
+       }
     }
     else{
         return 0;
     }
-    return 1;
+    cout<<"Not a valid Array, Since We went through all the Array and have not found a single Descending Value\n";
+    return 0;
+ 
 }
 
 int main(){
-    vector<int> arr = {0,3,2,1,2};
+    vector<int> arr = {0,1,2,3,4,5,6,7,8,9,10};
     bool sol = validMountainArray(arr);
     if (sol){
         cout<<"This is a Valid Mountain Array\n";
