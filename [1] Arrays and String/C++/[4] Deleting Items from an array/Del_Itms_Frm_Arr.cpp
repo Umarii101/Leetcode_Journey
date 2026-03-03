@@ -13,7 +13,7 @@ int removeElement(vector<int>&nums,int val){
     int i=0;
     //Pointer 1 = i, which starts from index 0 of the array.
     cout<<"Beginning Loop with i<last condition :"<<endl;
-    while(i<last){
+    while(i<=last){
         cout<<"i = : "<<i<<endl;
         if (nums[i] == val) {
             while(nums[i]==val){ //This while loop is used to handle the case for when the next index also contains the same val we want to remove, so we remove the value and do the shift until val is not repeated or the loop ends.
@@ -29,7 +29,7 @@ int removeElement(vector<int>&nums,int val){
         }
         
     }
-    return last; //Since Last will be at the last index where the Last modification was dumped, Hence that will be the size of the array that is updated after removing the undesired val
+    return last+1; //Since Last will be at the last index where the Last modification was dumped, Hence that will be the size of the array that is updated after removing the undesired val
 }
 
 int main(){
@@ -53,7 +53,8 @@ int main(){
     }
     cout<<"]"<<endl;
     cout<<"Beginning Element Removal \n";
-    removeElement(nums,val);
+    int size = removeElement(nums,val);
+    cout<<"Size of the output Array = "<<size<<endl;
     cout<<"The Output Array = [";
     for(int num : nums){
         cout<<num<<",";
