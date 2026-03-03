@@ -7,7 +7,7 @@ vector <int> replaceElements(vector<int>& arr) {
     bool bounds = 1;
     for(int i=0; i<arr.size();i++){
         cout<<"i = "<<i<<"\n";
-        if(arr[i] < arr[i+1] && bounds){
+        if(i+1 < arr.size() && arr[i] < arr[i+1] && bounds){
             cout<<"[Replacing] -> "<<arr[i]<<" -> "<<arr[i+1]<<endl;
             arr[i]=arr[i+1]; 
             int j = i;
@@ -35,11 +35,10 @@ vector <int> replaceElements(vector<int>& arr) {
     } 
     int last = arr.size()-1;
     cout<<"\n\n [SIZE]-> "<<last<<"\n\n";
-    arr[last-1]=arr[last];
+    if(last > 0) arr[last-1]=arr[last];
     arr[last]=-1;
     return arr;
 }
-
 int main(){
     vector<int> arr = {400}; //Size of Input  Array = 6
     int last = arr.size()-1;
