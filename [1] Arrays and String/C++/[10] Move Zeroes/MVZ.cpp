@@ -18,6 +18,7 @@ void moveZeroes(vector<int>& nums) {
             cout<<"Placing 0 at index i = "<<last<<", Afer Shifting the whole array to left \n";
             nums[last] =0;
             last -= 1;
+            rp--;
         }
     }
 }
