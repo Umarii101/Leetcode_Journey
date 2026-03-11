@@ -26,7 +26,7 @@ void moveZeroes(vector<int>& nums) {
 int main(){
     vector <int> nums = {0,1,0,3,12};
     //Expected Output = {1,3,12,0,0};
-    //Current Output ={1,0,3,0,0};
+    //Current Output ={1,3,12,0,0};
     moveZeroes(nums);
     cout<<"[";
     for (int i =0; i < nums.size();i++){
