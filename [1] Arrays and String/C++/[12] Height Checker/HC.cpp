@@ -1,13 +1,21 @@
 #include <iostream>
 #include <vector>
 using namespace std;
+
 int heightChecker(vector<int>& heights) {
     int count =0;
     for(int i =0; i<heights.size();i++){
         cout<<"i = "<<i<<endl;
-        if(heights[i]<heights[i+1]){
+        if(heights[i]>heights[i+1]){
             cout<<"\t\tFound an incorrect indice at i = "<<i<<endl;
             count++;
+        }
+        if(i==heights.size()-1){
+            cout<<"Reached the final Indice i = "<<i<<endl;
+            if(heights[i]>heights[i-1]){
+                cout<<"\t\tFound an incorrect indice at i = "<<i<<endl;
+                count++;
+            }
         }
     }
     return count;
