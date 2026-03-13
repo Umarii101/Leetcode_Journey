@@ -6,7 +6,6 @@ int heightChecker(vector<int>& heights) {
     int count =0;
     //First Create Another Sorted Array and then Compare.
     vector <int> nums = heights;
-    int wp =0; //Write pointer;
     for(int i=0; i<nums.size()-1;i++){
         cout<<"i = "<<i<<endl;
         int temp = 0;
