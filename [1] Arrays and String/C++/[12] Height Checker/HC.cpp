@@ -7,6 +7,7 @@ int heightChecker(vector<int>& heights) {
     //First Create Another Sorted Array and then Compare.
     vector <int> nums = heights;
     int wp =0; //Write pointer;
+    for (int j =0; j<nums.size()-1;j++){
     for(int i=0; i<nums.size()-1;i++){
         cout<<"i = "<<i<<endl;
         int temp = 0;
@@ -15,7 +16,6 @@ int heightChecker(vector<int>& heights) {
             nums[i]=nums[i+1];
             nums[i+1]=temp;
             temp=0;
-            i = -1; //Recheck indice.
         }
     }
     cout<<"Done Sorting \nPurging --> Misplaced Indices\n";
@@ -29,7 +29,7 @@ int heightChecker(vector<int>& heights) {
         cout<<nums[i]<<", ";
     }
     cout<<"]\n\n"<<endl;
-    
+    }
    for(int i =0;i<heights.size();i++){
         if(heights[i] != nums[i]){
             cout<<"Misplaced at i =  "<<i<<endl;
@@ -38,7 +38,6 @@ int heightChecker(vector<int>& heights) {
     }
     return count;
 }
-
 int main(){
     vector <int> heights = {9,2,8,3,8,4,6,6,8,3,3,1,2,8,9,6,6,5,3,2};
     int output = heightChecker(heights);
