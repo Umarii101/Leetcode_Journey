@@ -32,3 +32,5 @@ int main(){
     std::cout<<"]\n";
     return 0;
 }
+
+//Runtime 1690ms || Beats 5.00% || Memory 53.04MB || Beats 76.59%
