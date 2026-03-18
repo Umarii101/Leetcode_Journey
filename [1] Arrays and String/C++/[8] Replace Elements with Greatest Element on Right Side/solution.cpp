@@ -40,7 +40,7 @@ vector <int> replaceElements(vector<int>& arr) {
     return arr;
 }
 int main(){
-    vector<int> arr = {400}; //Size of Input  Array = 6
+    vector<int> arr = {56903,18666,60499,57517,26961}; //Size of Input  Array = 6
     int last = arr.size()-1;
     cout<<"Input Array = [";
     for(int i=0; i<last+1;i++){
