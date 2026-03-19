@@ -27,7 +27,6 @@ std::vector<int> findDisappearedNumbers(std::vector<int>& nums) {
 
 int main(){
     std::vector<int> nums = {4,3,2,7,8,2,3,1};
-    //Expected Output = {5,6}, Since they are not in the list of range (1,n).
     std::vector<int> output = findDisappearedNumbers(nums);
     std::cout<<"\n\nOutput Array = [";
     for(int i=0; i<output.size();i++){
