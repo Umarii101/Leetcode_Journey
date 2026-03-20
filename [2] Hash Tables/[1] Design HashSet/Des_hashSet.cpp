@@ -10,7 +10,7 @@ private:
     std::vector<std::list<int>> buckets;
 
     int hash(int key){
-        return key % numberBuckets;
+        return key % numBuckets;
     }
 
 public:
@@ -25,7 +25,7 @@ public:
         int index = hash(key);
         // Search linked list to find if the key already exists in our list or not.
         auto it = std::find(buckets[index].begin(), buckets[index].end(), key);
-        std::cout<<"[Iterator Speaking] I am Equal to ["<<it<<"]\n";
+        //std::cout<<"[Iterator Speaking] I am Equal to ["<<it<<"]\n";
         //If the iterator reaches the endm the key was not found, We can add it:
         if (it == buckets[index].end()){
             buckets[index].push_back(key);
