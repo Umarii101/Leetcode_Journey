@@ -5,58 +5,47 @@
 
 class MyHashSet {
 private:
-    // The number of buckets. We choose a prime number to help distribute 
-    // the keys more evenly across the buckets and reduce collisions.
     int numBuckets;
-    
-    // Our main data structure: A vector where each element is a linked list.
+
     std::vector<std::list<int>> buckets;
 
-    // A simple private helper function to compute the hash (the bucket index)
-    int hash(int key) {
-        return key % numBuckets;
+    int hash(int key){
+        return key % numberBuckets;
     }
 
 public:
-    MyHashSet() {
-        // 10007 is a prime number. Since there are at most 10^4 (10,000) calls,
-        // having ~10,000 buckets means each bucket will likely have 0 or 1 item.
-        numBuckets = 10007; 
-        
-        // Resize the vector to hold our buckets
+    MyHashSet(){
+        numBuckets = 1007;
+
         buckets = std::vector<std::list<int>>(numBuckets);
+        
     }
-    
-    void add(int key) {
-        int index = hash(key); // Find out which bucket this key belongs to
-        
-        // Search the linked list in this bucket. 
-        // We only add it if it doesn't already exist (Sets don't have duplicates).
+
+    void add (int key){
+        int index = hash(key);
+        // Search linked list to find if the key already exists in our list or not.
         auto it = std::find(buckets[index].begin(), buckets[index].end(), key);
-        
-        // If the iterator reaches the end, the key wasn't found. We can add it.
-        if (it == buckets[index].end()) {
+        std::cout<<"[Iterator Speaking] I am Equal to ["<<it<<"]\n";
+        //If the iterator reaches the endm the key was not found, We can add it:
+        if (it == buckets[index].end()){
             buckets[index].push_back(key);
         }
     }
-    
-    void remove(int key) {
-        int index = hash(key); // Find the bucket
-        
-        // std::list has a built-in remove function that easily removes 
-        // the specific value from the linked list if it exists.
-        buckets[index].remove(key);
-    }
-    
-    bool contains(int key) {
-        int index = hash(key); // Find the bucket
-        
-        // Search the linked list for the key
+
+    bool contains(int key){
+        int index = hash(key);
         auto it = std::find(buckets[index].begin(), buckets[index].end(), key);
         
-        // If the iterator is NOT at the end, it means we found the key!
+        // If the iterator has reached the end and we have not found the key, it means we can add our key to the list:
         return it != buckets[index].end();
     }
+
+    void remove(int key){
+        int index = hash(key);
+
+        buckets[index].remove(key);
+    }
+
 };
 
 int main() {
