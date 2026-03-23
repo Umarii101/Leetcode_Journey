@@ -34,7 +34,7 @@ class MyHashMap{
         buckets[index].push_back({key, value});        
         }
         
-        int get(key){
+        int get(int key){
             int index = hash(key);
             for(auto &pair : buckets[index]){
                 if(pair.first == key){
@@ -42,7 +42,7 @@ class MyHashMap{
                 }    
             }
             return -1; //The Key does not exist in this our Hashmap.
-    
+        } 
         void remove(int key){
             int index = hash(key);
             //Looking through the list in our bucket.
@@ -54,8 +54,8 @@ class MyHashMap{
                     //Snip this link out of the chain.
                     currentBucket.erase(it);
                     return;     //We have successfully removed the desired key and it's value. We are Done.
+                }
             }
+
         }
-
-
 };
