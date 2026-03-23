@@ -59,3 +59,21 @@ class MyHashMap{
 
         }
 };
+
+int main(){
+    MyHashMap myHashMap;
+    myHashMap.put(1, 1); 
+    myHashMap.put(2, 2); 
+    
+    // Use cout to actually see the results!
+    std::cout << "Get 1: " << myHashMap.get(1) << std::endl; // Should print 1
+    std::cout << "Get 3: " << myHashMap.get(3) << std::endl; // Should print -1
+    
+    myHashMap.put(2, 1); 
+    std::cout << "Get 2 after update: " << myHashMap.get(2) << std::endl; // Should print 1
+    
+    myHashMap.remove(2); 
+    std::cout << "Get 2 after remove: " << myHashMap.get(2) << std::endl; // Should print -1
+    
+    return 0;
+}
