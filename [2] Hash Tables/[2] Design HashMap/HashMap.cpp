@@ -38,11 +38,24 @@ class MyHashMap{
             int index = hash(key);
             for(auto &pair : buckets[index]){
                 if(pair.first == key){
-                    return 1; //The key exists and we return True as 1.
+                    return pair.second; //The key exists and we return it.
                 }    
             }
             return -1; //The Key does not exist in this our Hashmap.
     
+        void remove(int key){
+            int index = hash(key);
+            //Looking through the list in our bucket.
+            //For Best C++ Practice, we create a nickname for the specific bucket we are interested in.
+            auto &currentBucket = buckets[index];
+
+            for(auto it = currentBucket.begin(); it != currentBucket.end(); ++it){
+                if(it->first == key){
+                    //Snip this link out of the chain.
+                    currentBucket.erase(it);
+                    return;     //We have successfully removed the desired key and it's value. We are Done.
+            }
+        }
 
 
 };
