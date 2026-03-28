@@ -1,33 +1,29 @@
 #include <iostream>
-#include <vector>
+#include <unordered_set>
+
+int getNext(int n){
+    int total_sum = 0;
+    while(n > 0){
+        int d = n%10;
+        total_sum += d*d;
+        n /=10;
+    }
+    return total_sum;
+}
 
 bool isHappy(int n) {
-    std::vector<int> digits;
-    
-    // Process digits
-    while(n > 0){
-        digits.push_back(n % 10); // Add the last digit
-        n = n / 10;               // Remove the last digit
+    std::unordered_set<int> seen;
+
+    while(n !=1 && seen.find(n) == seen.end()){
+        seen.insert(n);
+        n = getNext(n);
     }
-    // Print results
-    std::cout << "The total Digits in [n] = [";
-    for(int j = 0; j < digits.size(); j++){
-        std::cout << digits[j] << (j == digits.size() - 1 ? "" : ", ");
-    }
-    std::cout << "]\n";
-    int last = *(digits.end()-1);
-    std::cout<<"The Last Digit is : "<<last<<"\n";
-    if(last == 1){
-        return true; //Happy Number
-    }
-    else{
-        return false; // Not a happy Number
-    }
+    return n == 1;
 }
 
 int main(){
     bool Result;
-    int n = 181;
+    int n = 7;
     Result = isHappy(n);
     if(Result){
         std::cout<<n<<" is a Happy Number! :)\n";
