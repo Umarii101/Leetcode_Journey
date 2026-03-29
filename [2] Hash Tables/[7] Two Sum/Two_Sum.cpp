@@ -1,27 +1,27 @@
 #include <iostream>
-#include <unordered_map>
 #include <vector>
 
 std::vector<int> twoSum(std::vector<int> nums, int target){
     std::vector<int> result;   
-    int size = nums.size()-1;
-    for(int num : nums){
+    for(int i = 0; i<= nums.size()-1;i++){
         //Starting from the first number until the last in the vector.
-        for(int i = 1; i < size; i++){
-            if (num+nums[i] == target){
+        int num = nums[i];
+        for(int j = i+1; j <= nums.size()-1; j++){        
+            if (num+nums[j] == target){
                 //Found our Desired Inputs
-                result.push_back(i-1);
+                std::cout<<"The Target has been Found at Index ["<<j-1<<"] & ["<<j<<"].\nTarget = "<<target<<"\n";
                 result.push_back(i);
+                result.push_back(j);
                 return result;
             }
-        }   
+        }
     }
     return result;
 }
 
 int main(){
-    std::vector<int> nums = {2,7,11,15};
-    int Target = 9;
+    std::vector<int> nums = {3,2,4};
+    int Target = 6;
     std::vector<int> Result;
     Result = twoSum(nums,Target);
     std::cout<<"Resultant Indexes = [";
