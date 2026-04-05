@@ -9,6 +9,7 @@
  
 std::vector <std::vector<std::string>> groupAnagrams(std::vector<std::string>& strs){
     std::vector<std::vector<std::string>> Result;
+    std::unordered_map<unsigned long long, std::vector<std::string>> temp_storage; //This will be used to store Huge Multiplication Keys to later accurately Group our strings.
     std::unordered_map<char, int> groupMap = {
         {'a', 2},    {'b', 3},   {'c',  5},
         {'d', 7},    {'e', 11},  {'f', 13},
@@ -34,8 +35,14 @@ std::vector <std::vector<std::string>> groupAnagrams(std::vector<std::string>& s
         }
         std::cout<<")-------------";
         std::cout<<"MULTIPLICATION RESULT-->("<<multiplication<<")\n";
+        temp_storage[multiplication].push_back(st);
     }
     
+    //Lets now Push result into the Resultant Vector of Strings
+    for(auto const& [key, bucket] : temp_storage){
+        Result.push_back(bucket); //The Key is the Multiplication of Primes, Whilst the Bucket is vector<string>. So we push the vector<string> in the Result Vector.
+    }
+
     return Result;
 }
 
