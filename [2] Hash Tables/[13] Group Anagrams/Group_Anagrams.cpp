@@ -6,7 +6,10 @@
 //My Approach
 //Lets Assign a prime number to each of the 26 letters. And then we can multiply them, since the multiplication of the Prime Numbers is Different for different combinations.
 //Hence we will be Avoiding the Collision Issue of The Different String colliding to one single Group while infact they do not belong there.
- 
+//This Solution is Blazing Fast. But it has a Storage constraint. Since unsigned long long is typically 64 bits. Its maximum value is: $18,446,744,073,709,551,615.
+//Hence this solution will fail for very large inputs such as "["aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab"]
+//So i can think of another solution, which might not be as quick as this, but it will have no memory issue.
+//For that solution we can first Sort our strings and then compare them individually to each other, And strings that are alike should be grouped together.
 std::vector <std::vector<std::string>> groupAnagrams(std::vector<std::string>& strs){
     std::vector<std::vector<std::string>> Result;
     std::unordered_map<unsigned long long, std::vector<std::string>> temp_storage; //This will be used to store Huge Multiplication Keys to later accurately Group our strings.
