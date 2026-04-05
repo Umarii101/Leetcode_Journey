@@ -2,27 +2,40 @@
 #include <vector>
 #include <string>
 #include <unordered_map>
-#include <functional> // Required for std::hash
                       
 //My Approach
 //Lets Assign a prime number to each of the 26 letters. And then we can multiply them, since the multiplication of the Prime Numbers is Different for different combinations.
 //Hence we will be Avoiding the Collision Issue of The Different String colliding to one single Group while infact they do not belong there.
-bool hash_key(std::string key){
-    std::hash<std::string> hasher;
-    size_t x = hasher(key);
-    std::cout<<"\nHash Key"<<x<<"\n";
-    return true;
-}
  
 std::vector <std::vector<std::string>> groupAnagrams(std::vector<std::string>& strs){
-   std::vector<std::vector<std::string>> Result = {};
-    bool n = hash_key("umar");
-    bool m = hash_key("ramu");
-    std::unordered_map<std::string, int> groupMap;
-    for (int i = 0; i < strs.size(); i++){
-        std::cout<<"\n"<<strs[i];
+    std::vector<std::vector<std::string>> Result;
+    std::unordered_map<char, int> groupMap = {
+        {'a', 2},    {'b', 3},   {'c',  5},
+        {'d', 7},    {'e', 11},  {'f', 13},
+        {'g', 17},   {'h', 19},  {'i', 23},
+        {'j', 29},   {'k', 31},  {'l', 37},
+        {'m', 41},   {'n', 43},  {'o', 47},
+        {'p', 53},   {'q', 59},  {'r', 61},
+        {'s', 67},   {'t', 71},  {'u', 73},
+        {'v', 79},   {'w', 83},  {'x', 89},
+        {'y', 97},   {'z', 101}
+    };
+//    for (const auto& pair : groupMap) {
+//        std::cout << pair.first << ": " << pair.second << "\n";
+//    }
+//    std::cout<<"\n";
+    
+    for(std::string st : strs){
+        unsigned long long multiplication = 1;
+        std::cout<<"LENGTH = ["<<st.length()<<"] CHAR-->(";
+        for(int i =0; i<st.length();i++){
+            multiplication *= groupMap[st[i]];
+            std::cout<<st[i];
+        }
+        std::cout<<")-------------";
+        std::cout<<"MULTIPLICATION RESULT-->("<<multiplication<<")\n";
     }
-    std::cout<<"\n";
+    
     return Result;
 }
 
