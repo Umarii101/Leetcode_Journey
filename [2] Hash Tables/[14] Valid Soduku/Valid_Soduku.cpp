@@ -27,34 +27,36 @@ bool isValidSudoku(std::vector<std::vector<char>>& board){
                 columns[c].insert(val);
 
                 //Need to create logic to detect 9 '3x3'SubBoxes in The board and keep track of which SubBox We are in Right now.
-                int current_SubBox;
-                if(r<=2 && c<=2){//Since R and C  initialized from 0.
-                    current_SubBox = 1;
-                }
-                if(r<=2 && c>=2 && c<=5){
-                    current_SubBox = 2;
-                }
-                if(r<=2 && c>=5 && c<=8){
-                    current_SubBox = 3;
-                }
-                if(r>2 && r<=5 && c<=2){
-                    current_SubBox = 4;
-                }
-                if(r>2 && r<=5 && c>2 && c<=5){
-                    current_SubBox = 5;
-                }
-                if(r>2 && r<=5 && c>5 && c<=8){
-                    current_SubBox = 6;
-                }
-                if(r>5 && r<=8 && c<=2){
-                    current_SubBox = 7;
-                }
-                if(r>5 && r<=8 && c>2 && c<=5){
-                    current_SubBox = 8;
-                }
-                if(r>5 && r<=8 && c>5 && c<=8){
-                    current_SubBox = 9;
-                }
+                int current_SubBox = (r / 3) * 3 + (c / 3); //Most Efficient Way to Calculate Subboxes.
+
+                //Slow Method To calculate Current SubBox.
+                //if(r<=2 && c<=2){//Since R and C  initialized from 0.
+                //    current_SubBox = 1;
+                //}
+                /else if(r<=2 && c>=2 && c<=5){
+                 //   current_SubBox = 2;
+                //}
+                //else if(r<=2 && c>=5 && c<=8){
+                //    current_SubBox = 3;
+                //}
+                //else if(r>2 && r<=5 && c<=2){
+                //    current_SubBox = 4;
+                //}
+                //else if(r>2 && r<=5 && c>2 && c<=5){
+                //    current_SubBox = 5;
+                //}
+                //else if(r>2 && r<=5 && c>5 && c<=8){
+                //    current_SubBox = 6;
+                //}
+                //else if(r>5 && r<=8 && c<=2){
+                 //   current_SubBox = 7;
+                //}
+                //else if(r>5 && r<=8 && c>2 && c<=5){
+                  //  current_SubBox = 8;
+                //}
+                //else if (r>5 && r<=8 && c>5 && c<=8){
+                //    current_SubBox = 9;
+               // }
                 if(subBoards[current_SubBox].count(val)>0){
                     std::cout<<"The SubBoard Number : ["<<current_SubBox<<"] is not Valid.\n";
                     return false;//Since this Value Already Exists in our SubBoard.
@@ -67,17 +69,17 @@ bool isValidSudoku(std::vector<std::vector<char>>& board){
 
 int main(){
     std::vector<std::vector<char>> board = {
-         {'5','3','.',  '.','7','.',    '.','.','.'}
-        ,{'6','.','.',  '1','9','5',    '.','.','.'}
-        ,{'.','9','8',  '.','.','.',    '.','6','.'}
+        {'.','4','.',       '.','.','1',        '.','.','.'},      
+        {'.','.','4',       '.','.','.',        '.','.','.'},      
+        {'.','.','.',       '.','.','.',        '7','.','.'},
 
-        ,{'8','.','.',  '.','6','.',    '.','.','3'}
-        ,{'4','.','.',  '8','.','3',    '.','.','1'}
-        ,{'7','.','.',  '.','2','8',    '.','.','6'}
+        {'.','.','.',       '.','.','.',        '.','.','.'},      
+        {'.','.','.',       '3','.','.',        '.','6','.'},      
+        {'.','.','1',       '.','.','6',        '.','9','.'},
 
-        ,{'.','6','.',  '.','.','.',    '2','8','.'}
-        ,{'.','.','.',  '4','1','9',    '.','.','5'}
-        ,{'.','.','.',  '.','8','.',    '.','7','9'}
+        {'.','.','.',       '.','1','.',        '.','.','.'},      
+        {'.','.','.',       '.','.','.',        '2','.','.'},      
+        {'.','.','5',       '8','.','.',        '.','.','0'}
     };
     //Expected Output = True.
     bool Result = isValidSudoku(board);
