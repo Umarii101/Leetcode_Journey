@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+
 struct TreeNode {
     int val;
     TreeNode *left;
@@ -15,7 +16,7 @@ std::vector<Treenode*> findDuplicateSubTrees(Treenode* root){
 }
 
 int main(){
-    Treenode root = {2,2,2,3,null,3,null} 
+    TreeNode root = {2,2,2,3,null,3,null} 
     //Output = [[2,3],[3]]
     return 0;
 }
