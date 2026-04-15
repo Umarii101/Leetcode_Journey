@@ -31,8 +31,8 @@ std::vector<int> topKFrequent(std::vector<int>& nums, int k){
 
 int main(){
 //Example 3:
-    std::vector<int> nums = {1,2,1,2,1,2,3,1,3,2};
-    int k = 2;
+    std::vector<int> nums = {3,0,1,0};
+    int k = 1;
     std::vector<int> Result = topKFrequent(nums,k);
     std::cout<<"Result = {";
     for(int i=0;i<Result.size();i++){
