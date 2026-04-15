@@ -16,8 +16,10 @@ std::vector<int> topKFrequent(std::vector<int>& nums, int k){
         int mostFreqNumb = 0;
         
         for(auto it = freq.begin(); it != freq.end();++it){
-            maxfreq = it -> second;
-            mostFreqNumb = it -> first;
+            if(it->second > maxfreq){
+                maxfreq = it -> second;
+                mostFreqNumb = it -> first;
+            }
         }
 
         //Now at This point we have found the Biggest Winnder "K". Lets add it to our Result.
