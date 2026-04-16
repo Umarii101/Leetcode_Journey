@@ -14,7 +14,8 @@ class Randomized_Set{
         int numBuckets;
         std::vector<std::list<int>> buckets;
         int hash(int key){
-            return key % numBuckets;
+            int h = key % numBuckets;
+            return (h < 0) ? h + numBuckets : h;
         }
             
     public:
@@ -57,7 +58,7 @@ class Randomized_Set{
             // 2. Setup the random generator (Your existing code was perfect here)
             std::random_device rd;
             std::mt19937 gen(rd());
-    
+            if (total_items == 0){return 0;} // Or whatever default is safe 
             // Pick a random 'step' between 0 and (total_items - 1)
             std::uniform_int_distribution<> distr(0, total_items - 1);
             int target_step = distr(gen);
