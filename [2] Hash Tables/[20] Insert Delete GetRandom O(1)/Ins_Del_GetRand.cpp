@@ -85,7 +85,8 @@ int main(){
     Randomized_Set randomSet;
     randomSet.insert(3);
     randomSet.insert(12);
-    randomSet.insert(19);
+    randomSet.insert(21);
+    randomSet.insert(54);
     int rand = randomSet.getRandom();
     
     std::cout<<"The Random Number is : "<<rand<<"\n";
