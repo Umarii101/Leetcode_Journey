@@ -9,12 +9,10 @@ bool isPalindrome(std::string s) {
         c = std::tolower((unsigned char)c);
     }
 
-    // 2. Remove special characters and numbers
-    // We want to KEEP only lowercase letters (a-z)
+    // 2. Remove special characters (KEEP letters AND numbers)
     s.erase(std::remove_if(s.begin(), s.end(), [](unsigned char c) {
-        // Return true if it's a number OR a special character
-        // (This is the same as saying: return true if it's NOT a letter)
-        return !std::isalpha(c); 
+        // Return true if it's NOT an alphanumeric character
+        return !std::isalnum(c); 
     }), s.end());
 
    // 3. Reverse the string totally
