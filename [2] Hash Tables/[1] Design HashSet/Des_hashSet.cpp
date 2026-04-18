@@ -15,8 +15,8 @@ private:
 
 public:
     MyHashSet(){
-        numBuckets = 1007;
 
+        numBuckets = 1007;
         buckets = std::vector<std::list<int>>(numBuckets);
         
     }

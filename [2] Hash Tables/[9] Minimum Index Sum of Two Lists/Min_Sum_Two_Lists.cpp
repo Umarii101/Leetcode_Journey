@@ -24,6 +24,7 @@ std::vector<std::string> findRestaurant(std::vector<std::string>& list1, std::ve
             minIndex = index;
         }
     }
+
     if( Store.count(minIndex)){
         Result = Store[minIndex];
     }

@@ -3,7 +3,6 @@
 #include <unordered_map>
 #include <vector>
 
-
 int firstUniqChar(std::string s) {
     std::unordered_map  < char,std::vector<int> > hashmap; //I will use this to keep track of Indexes and seen characters. 
     for (int i = 0; i<s.length();i++){
