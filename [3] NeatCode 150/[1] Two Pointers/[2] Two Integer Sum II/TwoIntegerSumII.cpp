@@ -1,18 +1,27 @@
 #include <iostream>
 #include <vector>
 
-std::vector<int> twoSum(std::vector<int>& numbers, int target){
-    std::vector<int> Result;
-    for(int i = 0; i<numbers.size();i++){
-        for(int j = i+1; j<numbers.size();j++){
-            if(numbers[i]+numbers[j] == target){
-                //We found our pair.Lets save it into our vector.
-                Result.push_back(i+1);
-                Result.push_back(j+2);
-            }
+std::vector<int> twoSum(std::vector<int>& numbers, int target) {
+    int left = 0;
+    int right = numbers.size() - 1;
+
+    while (left < right) {
+        int currentSum = numbers[left] + numbers[right];
+
+        if (currentSum == target) {
+            // +1 because the problem is 1-indexed
+            return {left + 1, right + 1};
+        } 
+        else if (currentSum > target) {
+            // The sum is too high, move the right pointer to a smaller value
+            right--;
+        } 
+        else {
+            // The sum is too low, move the left pointer to a larger value
+            left++;
         }
     }
-    return Result;
+    return {}; // Return empty if no solution is found
 }
 
 int main(){
