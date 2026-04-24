@@ -2,9 +2,31 @@
 #include <vector>
 
 int maxArea(std::vector<int>& heights){
-    int Result;
+    //Formula that i think is applicable here is Distance (Index <-> Index) * Height (Smaller between the two).
+    //First Lets calculate a Suitable Distance. 
+    int left = 0;
+    int right = heights.size()-1;
+    int volume=0; //To keep track of Current volume to Decide the Max volume.
+    int maxVolume = 0;
+    while(left<right){
+        int height;
+        int distance = right - left;
+        if(heights[left] < heights[right]){
+            height = heights[left];
+            left++;
+        }
+        else{
+            height = heights[right];
+            right--;
+        }
+        volume = distance * height;
+        if(volume > maxVolume){
+            maxVolume = volume;
+        }
 
-    return Result;
+    }
+
+    return maxVolume;
 }
 
 int main(){
